@@ -88,14 +88,8 @@ class SudokuSolver {
   }
 
   validate(puzzleString) {
-    if (!(puzzleString.match(/^[1-9\.]+$/)[0].length == 81)) return false;
-    let regex = /([1-9]).*\1/
-    for (let i = 0; i < 9; i++) {
-      if (regex.test(this.row(puzzleString, this.spotToRow[i]))) return false;
-      if (regex.test(this.col(puzzleString, i))) return false;
-      if (regex.test(this.reg(puzzleString, i))) return false;
-    }
-    return true
+    if (/[^1-9\.]/.test(puzzleString)) return { error: 'Invalid characters in puzzle' }
+    if (puzzleString.length != 81) return { error: 'Expected puzzle to be 81 characters long' }
   }
 
   checkRowPlacement(puzzleString, row, column, value) {
@@ -157,8 +151,6 @@ class SudokuSolver {
 
   }
 }
-
-let solver = new SudokuSolver;
 
 module.exports = SudokuSolver;
 
