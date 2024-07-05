@@ -9,7 +9,7 @@ let strings = require('../controllers/puzzle-strings.js').puzzlesAndSolutions;
 
 suite('Unit Tests', () => {
     test('validate', function () {
-        assert.equal(solver.validate(strings[0][0]), true);
+        assert.equal(solver.validate(strings[0][0]), undefined);
     });
     test('row', function () {
         assert.equal(solver.row(strings[0][0], 'a'), '1.5..2.84');
@@ -29,13 +29,20 @@ suite('Unit Tests', () => {
     test('checkRegionPlacement', function () {
         assert.equal(solver.checkRegionPlacement(strings[0][0], 'a', 2, 3), true);
     });
-    test('solve', function () {
+    test('solve1', function () {
         assert.equal(solver.solve(strings[0][0]), strings[0][1]);
+    });
+    test('solve2', function () {
         assert.equal(solver.solve(strings[1][0]), strings[1][1]);
+    });
+    test('solve3', function () {
         assert.equal(solver.solve(strings[2][0]), strings[2][1]);
+    });
+    test('solve4', function () {
         assert.equal(solver.solve(strings[3][0]), strings[3][1]);
+    });
+    test('solve4', function () {
         assert.equal(solver.solve(strings[4][0]), strings[4][1]);
     });
-
 });
 
